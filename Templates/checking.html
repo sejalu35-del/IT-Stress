@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stress Prediction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Stress Prediction - Enter Feature Values</h2>
+
+    <form method="POST" class="card p-4 shadow-lg rounded">
+        
+        <!-- Numeric Features -->
+        <h5>Numeric Features</h5>
+        {% for feature in numeric_cols %}
+        <div class="mb-3">
+            <label class="form-label">{{ feature }}</label>
+            <input type="text" class="form-control" name="{{ feature }}" required>
+        </div>
+        {% endfor %}
+
+        <!-- Categorical Features -->
+        <h5>Categorical Features</h5>
+        {% for feature in categorical_cols %}
+        <div class="mb-3">
+            <label class="form-label">{{ feature }}</label>
+            <select class="form-select" name="{{ feature }}" required>
+                <option value="" disabled selected>-- Select --</option>
+                {% for option in encoders[feature].classes_ %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endfor %}
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg">Predict Stress Level</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
