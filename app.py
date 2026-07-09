@@ -7,12 +7,23 @@ import matplotlib.pyplot as plt
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import os
 
-app = Flask(
-    __name__,
-    template_folder="Templates",
-    static_folder="static"
-)
+
+@app.route("/debug")
+def debug():
+    return "<br>".join(os.listdir("."))
+
+@app.route("/debug2")
+def debug2():
+    return "<br>".join(os.listdir("templates"))
+
+app = Flask(__name__, template_folder="Templates")
 app.secret_key = 'xbsklaoe'
+
+import os
+
+print("Current directory:", os.getcwd())
+print("Files:", os.listdir("."))
+print("Templates:", os.listdir("templates"))
 
 # ==========================
 # Load trained model bundle
