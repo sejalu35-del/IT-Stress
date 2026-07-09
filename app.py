@@ -49,6 +49,11 @@ create_users_table()
 # ==========================
 # Routes
 # ==========================
+
+@app.route("/test")
+def test():
+    return "Render is working!"
+
 @app.route('/')
 def home():
     return render_template('home.html')
