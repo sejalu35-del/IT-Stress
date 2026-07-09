@@ -7,6 +7,14 @@ import matplotlib.pyplot as plt
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import os
 
+@app.route("/debug")
+def debug():
+    return (
+        f"Current dir: {os.getcwd()}<br><br>"
+        f"Files: {os.listdir('.')}<br><br>"
+        f"Templates exists: {os.path.exists('templates')}<br>"
+        f"Templates dir: {os.listdir('templates') if os.path.exists('templates') else 'NOT FOUND'}"
+    )
 
 @app.route("/debug")
 def debug():
