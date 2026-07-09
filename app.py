@@ -7,7 +7,9 @@ import matplotlib.pyplot as plt
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import os
 
-app = Flask(__name__)
+app = Flask(__name__,
+templates_folder="templates",
+static_folder="static")
 app.secret_key = 'xbsklaoe'
 
 # ==========================
