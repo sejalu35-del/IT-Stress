@@ -188,7 +188,6 @@ def checking():
             plot_url=plot_url
             )           
 
-            return redirect(url_for('result', result=result_text, plot_url=plot_url))
         except Exception as e:
             flash(f"Error during prediction: {str(e)}", "danger")
 
