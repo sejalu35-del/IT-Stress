@@ -189,18 +189,13 @@ def checking():
             )           
 
         except Exception as e:
-            flash(f"Error during prediction: {str(e)}", "danger")
+        return f"Prediction Error: {str(e)}"
 
     return render_template('checking.html', feature_names=feature_names,
                            categorical_cols=categorical_cols,
                            numeric_cols=numeric_cols,
                            encoders=encoders)
 
-@app.route('/result')
-def result():
-    result = request.args.get('result')
-    plot_url = request.args.get('plot_url')
-    return render_template('result.html', result=result, plot_url=plot_url)
 
 # ==========================
 # Run App
