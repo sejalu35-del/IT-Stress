@@ -186,16 +186,18 @@ def checking():
             "result.html",
             result=result_text,
             plot_url=plot_url
-            )           
+            )
 
-        except Exception as e:
-        return f"Prediction Error: {str(e)}"
+            except Exception as e:
+            return f"Prediction Error: {str(e)}"
 
-    return render_template('checking.html', feature_names=feature_names,
-                           categorical_cols=categorical_cols,
-                           numeric_cols=numeric_cols,
-                           encoders=encoders)
-
+            return render_template(
+            'checking.html',
+            feature_names=feature_names,
+            categorical_cols=categorical_cols,
+            numeric_cols=numeric_cols,
+            encoders=encoders
+)
 
 # ==========================
 # Run App
